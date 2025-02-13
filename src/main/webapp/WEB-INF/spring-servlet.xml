@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context = "http://www.springframework.org/schema/context"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<!-- comments here -->
+   <context:component-scan base-package = "project_property_search_app" />
+ 
+   <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver" name="viewResolver">
+   	 <property name="prefix" value="/WEB-INF/"></property>
+     <property name ="suffix" value =".jsp" />
+   </bean>
+   <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>  
+		<property name="url" value="jdbc:mysql://localhost:3306/propertysearchdb" />  
+		<property name="username" value="root" />  
+		<property name="password" value="Genpact@123456789" />  
+	</bean>  
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
+		<property name="dataSource" ref="ds"></property>  
+	</bean>  
+<mvc:annotation-driven></mvc:annotation-driven>
+</beans>
